@@ -13,32 +13,40 @@ class SearchableMovieReviewsContainer extends Component {
         reviews: []
     }
 
-    handleSearchInputChange = event => this.setState({ searchTerm: event.target.value})
+    handleSearchInputChange = event => 
+        this.setState({ searchTerm: event.target.value});
 
     handleSubmit = event => {
+        
         event.preventDefault();
 
         fetch(URL.concat(this.state.searchTerm))
+   
             .then(res => res.json())
+       
             .then(res => this.setState({ reviews: res.results }));
-
+      
     };
 
     render(){
-        return(
+        return( 
             <div className="searchable-movie-reviews">
                 <form onSubmit={this.handleSubmit}>
+                    
                     <label htmlFor="search-input">SEARCH Movie Reviews</label>
                     <input 
                         id="search-input"
                         type="text"
-                        style={{width: 300}}
+                        style={{width: 250}}
                         onChange={this.handleSearchInputChange}
                     />
+                
                     <button type="submit">Submit</button>
                 </form>
  
-    
+                {/* {typeof this.state.reviews === 'object' &&
+                this.state.reviews.length > 0 && <h2>Movie Review By Search:</h2>} */}
+
                 <MovieReviews reviews={this.state.reviews}/>
             </div>
         )

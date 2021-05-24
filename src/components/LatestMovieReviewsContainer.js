@@ -28,10 +28,10 @@ class LatestMovieReviewsContainer extends Component {
         // console.log("inside render")
         return(
             <div className="latest-movie-reviews">
-            <h1>Latest Reviews</h1>
+                <h1>Latest Reviews</h1>
             
-            <MovieReviews reviews={this.state.reviews}/>
-        </div>
+                <MovieReviews reviews={this.state.reviews}/>
+            </div>
            ); 
     }
 }
